@@ -1,0 +1,66 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+```
+
+# scerden.geometadb
+
+R data pkg containing tables from `geometadb.sqlite` provided by [GEOmetadb](https://www.bioconductor.org/packages/release/bioc/html/GEOmetadb.html) bioconductor pkg.
+
+This pkg makes available the following tables:  
+```{r, eval = T}
+suppressPackageStartupMessages(library(tidyverse))
+library(scerden.geometadb)
+glimpse(gds)
+glimpse(gsm)
+glimpse(gse)
+glimpse(gpl)
+```
+
+## pkg API:
+
+* `find_in_*(x)` finds the observations of table that match pattern `x` in a least 1 variable.
+A few built in helper functions to query against each cel of each table (all lower case!):
+```{r}
+x <- c("top[1|2|3|o]")
+find_in_gsm(x)
+find_in_gse(x)
+x <- c("affy", "nimblegen")
+find_in_gpl(x)
+# find_in_gds() #TODO
+# find_in_gds_subset() #TODO
+```
+
+## pkg creation:
+
+* Prelims  
+```{r, eval = F}
+use_readme_rmd()
+use_data_raw()
+```
+* save subset of `geometadb` as `tbl`s  for use in package. see `data-raw/` in pkg source:    
+```{r, echo = F}
+library(tidyverse)
+library(stringr)
+tibble(file = list.files("data-raw", pattern = "\\.R$")) %>% 
+    separate(file, c("step", "description"), sep = '_') %>% 
+    mutate(description = description %>% str_replace('\\.R$', '') %>% str_replace_all('-', ' ')) %>% 
+    knitr::kable()
+```
+* when writing `find_*` fxns  
+```{r, eval = F}
+use_package("tidyr")
+use_package("dplyr")
+use_package("purrr")
+use_package("stringr")
+```
+
