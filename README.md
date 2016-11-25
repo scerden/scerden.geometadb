@@ -5,6 +5,13 @@ scerden.geometadb
 
 R data pkg containing tables from `geometadb.sqlite` provided by [GEOmetadb](https://www.bioconductor.org/packages/release/bioc/html/GEOmetadb.html) bioconductor pkg.
 
+install
+-------
+
+``` r
+devtools::install_github("scerden/scerden.geometadb")
+```
+
 This pkg makes available the following tables:
 
 ``` r

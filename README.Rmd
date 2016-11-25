@@ -16,6 +16,13 @@ knitr::opts_chunk$set(
 
 R data pkg containing tables from `geometadb.sqlite` provided by [GEOmetadb](https://www.bioconductor.org/packages/release/bioc/html/GEOmetadb.html) bioconductor pkg.
 
+## install
+
+```{r, eval = F}
+devtools::install_github("scerden/scerden.geometadb")
+```
+
+
 This pkg makes available the following tables:  
 ```{r, eval = T}
 suppressPackageStartupMessages(library(tidyverse))
