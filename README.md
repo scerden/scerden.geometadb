@@ -229,6 +229,13 @@ find_in_gpl(x)
 # find_in_gds_subset() #TODO
 ```
 
+-   `harvest_pmids_from_geo(acc)` finds any pubmed ids associated with a GEO accession by scraping from the GEO accession viewer page:
+
+``` r
+harvest_pmids_from_geo("GSE42528")
+#> [1] "24766815" "24952590"
+```
+
 pkg creation:
 -------------
 
@@ -237,6 +244,7 @@ pkg creation:
 ``` r
 use_readme_rmd()
 use_data_raw()
+use_testthat()
 ```
 
 -   save subset of `geometadb` as `tbl`s for use in package. see `data-raw/` in pkg source:
@@ -247,11 +255,13 @@ use_data_raw()
 | 02      | filter and extract geometadb tbls to csv |
 | 03      | save data objects                        |
 | 04      | cleanup remove previous geometadb        |
-| \* when | writing `find_*` fxns                    |
+| \* when | writing `R/` fxns                        |
 
 ``` r
 use_package("tidyr")
 use_package("dplyr")
 use_package("purrr")
 use_package("stringr")
+use_package("httr")
+use_package("rvest")
 ```

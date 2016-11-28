@@ -3,3 +3,4 @@
 export(find_in_gpl)
 export(find_in_gse)
 export(find_in_gsm)
+export(harvest_pmids_from_geo)
