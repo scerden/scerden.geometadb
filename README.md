@@ -75,7 +75,7 @@ glimpse(gsm)
 #> $ data_row_count         <dbl> 6024, 6024, 6024, 6024, 6024, 6024, 602...
 #> $ channel_count          <dbl> 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, ...
 glimpse(gse)
-#> Observations: 2,579
+#> Observations: 2,084
 #> Variables: 18
 #> $ gse                  <chr> "GSE1688", "GSE20420", "GSE27925", "GSE32...
 #> $ ID                   <dbl> 1445, 18110, 24928, 56979, 56981, 37706, ...
@@ -118,6 +118,21 @@ glimpse(gpl)
 #> $ data_row_count       <dbl> 16128, 7680, 9216, 9216, 8832, 9216, 8448...
 #> $ supplementary_file   <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
 #> $ bioc_package         <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+geo_links
+#> # A tibble: 2,606 × 2
+#>     geo_gpl  geo_gse
+#>       <chr>    <chr>
+#> 1   GPL1001  GSE1688
+#> 2  GPL10039 GSE44871
+#> 3  GPL10039 GSE60140
+#> 4  GPL10039 GSE70202
+#> 5  GPL10039 GSE20420
+#> 6  GPL10039 GSE27925
+#> 7  GPL10039 GSE32623
+#> 8  GPL10039 GSE33904
+#> 9  GPL10045 GSE51613
+#> 10 GPL10045 GSE57476
+#> # ... with 2,596 more rows
 ```
 
 pkg API:
@@ -160,7 +175,7 @@ find_in_gse(x)
 #> Warning: attributes are not identical across measure variables; they will
 #> be dropped
 #> [[1]]
-#> # A tibble: 42 × 18
+#> # A tibble: 35 × 18
 #>         gse    ID
 #>       <chr> <dbl>
 #> 1  GSE38496 33896
@@ -170,10 +185,10 @@ find_in_gse(x)
 #> 5  GSE52701 43122
 #> 6  GSE55948 47568
 #> 7  GSE62927 54867
-#> 8  GSE68016 58739
-#> 9  GSE22809 20349
-#> 10 GSE37005 32712
-#> # ... with 32 more rows, and 16 more variables: title <chr>, status <chr>,
+#> 8  GSE22809 20349
+#> 9  GSE37005 32712
+#> 10 GSE61243 50781
+#> # ... with 25 more rows, and 16 more variables: title <chr>, status <chr>,
 #> #   submission_date <date>, last_update_date <date>, pubmed_id <int>,
 #> #   summary <chr>, type <chr>, contributor <chr>, web_link <chr>,
 #> #   overall_design <chr>, repeats <chr>, repeats_sample_list <chr>,
@@ -255,6 +270,7 @@ use_testthat()
 | 02      | filter and extract geometadb tbls to csv |
 | 03      | save data objects                        |
 | 04      | cleanup remove previous geometadb        |
+| 05      | geo links between accessions tbl         |
 | \* when | writing `R/` fxns                        |
 
 ``` r
